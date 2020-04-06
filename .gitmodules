@@ -1,0 +1,3 @@
+[submodule "deps/madronalib"]
+	path = deps/madronalib
+	url = https://github.com/madronalabs/madronalib.git

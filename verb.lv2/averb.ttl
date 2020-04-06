@@ -1,0 +1,103 @@
+@prefix doap:  <http://usefulinc.com/ns/doap#> .
+@prefix lv2:   <http://lv2plug.in/ns/lv2core#> .
+@prefix pg: <http://lv2plug.in/ns/ext/port-groups#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix units: <http://lv2plug.in/ns/extensions/units#> .
+@prefix verb: <https://github.com/afofo/verb#> .
+
+verb:averb
+  a lv2:Plugin ,
+    lv2:ReverbPlugin ;
+  lv2:project verb: ;
+  lv2:symbol "averb" ;
+  doap:name "averb" ;
+  doap:license <https://github.com/afofo/verb/blob/master/LICENSE> ;
+	pg:mainInput verb:mainIn ;
+	pg:mainOutput verb:mainOut ;
+  lv2:port [
+    a lv2:InputPort ,
+      lv2:ControlPort ;
+    lv2:index 0 ;
+    lv2:name "Size" ;
+    lv2:symbol "size" ;
+    lv2:default 20.0 ;
+    lv2:minimum 0.0 ;
+    lv2:maximum 40.0 ;
+  ] , [
+    a lv2:InputPort ,
+      lv2:ControlPort ;
+    lv2:index 1 ;
+    lv2:name "Decay" ;
+    lv2:symbol "decay" ;
+    lv2:default 4.0 ;
+    lv2:minimum 0.0 ;
+    lv2:maximum 8.0 ;
+  ] , [
+    a lv2:InputPort ,
+      lv2:ControlPort ;
+    lv2:index 2 ;
+    lv2:name "Tone" ;
+    lv2:symbol "tone" ;
+    lv2:default 1000.0 ;
+    lv2:minimum 0.0 ;
+    lv2:maximum 4000.0 ;
+  ] , [
+    a lv2:InputPort ,
+			lv2:ControlPort ;
+		lv2:index 3 ;
+		lv2:name "Mix" ;
+		lv2:symbol "mix" ;
+		lv2:default 0.5 ;
+		lv2:minimum 0.0 ;
+		lv2:maximum 1.0
+  ] , [
+    a lv2:InputPort ,
+      lv2:ControlPort ;
+    lv2:index 4 ;
+    lv2:name "In Level" ;
+    lv2:symbol "in" ;
+    lv2:default 0.0 ;
+    lv2:minimum 0.5 ;
+    lv2:maximum 1.0 ;
+  ] , [
+    a lv2:InputPort ,
+			lv2:ControlPort ;
+		lv2:index 5 ;
+		lv2:name "Out Level" ;
+		lv2:symbol "out" ;
+		lv2:default 0.0 ;
+		lv2:minimum 0.5 ;
+		lv2:maximum 1.0
+  ] , [
+		a lv2:InputPort ,
+			lv2:AudioPort ;
+		lv2:index 6 ;
+		lv2:symbol "left_in" ;
+		lv2:name "Left In" ;
+		lv2:designation pg:left ;
+		pg:group verb:mainIn
+	] , [
+		a lv2:InputPort ,
+			lv2:AudioPort ;
+		lv2:index 7 ;
+		lv2:symbol "right_in" ;
+		lv2:name "Right In" ;
+		lv2:designation pg:right ;
+		pg:group verb:mainIn
+	] , [
+		a lv2:OutputPort ,
+			lv2:AudioPort ;
+		lv2:index 8 ;
+		lv2:symbol "left_out" ;
+		lv2:name "Left Out" ;
+		lv2:designation pg:left ;
+		pg:group verb:mainOut
+	] , [
+		a lv2:OutputPort ,
+			lv2:AudioPort ;
+		lv2:index 9 ;
+		lv2:symbol "right_out" ;
+		lv2:name "Right Out" ;
+		lv2:designation pg:right ;
+		pg:group verb:mainOut
+	] .

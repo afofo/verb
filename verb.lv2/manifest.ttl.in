@@ -1,0 +1,36 @@
+@prefix doap:  <http://usefulinc.com/ns/doap#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix lv2:   <http://lv2plug.in/ns/lv2core#> .
+@prefix pg: <http://lv2plug.in/ns/ext/port-groups#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix verb: <https://github.com/afofo/verb#> .
+
+<https://github.com/ngwese>
+	a foaf:Person ;
+	foaf:name "Greg Wuller" ;
+	foaf:mbox <mailto:ngwese@afofo.com> .
+
+verb:
+  a doap:Project ;
+  doap:name "verb lv2 plugin(s)" ;
+	doap:shortdesc "various reverbs" ;
+	doap:homepage <https://github.com/afofo/verb> ;
+	doap:maintainer <https://github.com/ngwese> .
+
+verb:mainIn
+	a pg:StereoGroup ,
+		pg:InputGroup ;
+	rdfs:label "Input" ;
+	lv2:symbol "in" .
+
+verb:mainOut
+	a pg:StereoGroup ,
+		pg:OutputGroup ;
+	pg:source verb:mainIn ;
+	rdfs:label "Output" ;
+	lv2:symbol "out" .
+
+verb:averb
+  a lv2:Plugin ;
+  rdfs:seeAlso <averb.ttl> ;
+  lv2:binary <averb@LIB_EXT@> .
